@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.4"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Goals setter ",
+  "main": "server.js",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "author": "Annappa Gowda",
+  "license": "MIT"
+}
