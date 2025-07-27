@@ -1,6 +1,5 @@
 const asyncHandler = require("express-async-handler");
 const Goal = require("../models/goal.model.js");
-const User = require("../models/user.model.js");
 
 // @desc    Get Goals
 // @route   GET /api/goals
@@ -53,15 +52,31 @@ const updateGoal = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Goal not found");
   }
-  const user = await User.findById(req.user.id);
-  if (!user) {
-    res.status(404);
+
+  // Check if the user exists
+
+  // const user = await User.findById(req.user.id);
+  // if (!user) {
+  //   res.status(404);
+  //   throw new Error("User not found.");
+  // }
+  // if (goal.user.toString() !== user.id) {
+  //   res.status(401);
+  //   throw new Error("User not authorized.");
+  // }
+
+  //this is more simplyfied way of doing the same check
+
+  if (!req.user) {
+    res.status(401);
     throw new Error("User not found.");
   }
-  if (goal.user.toString() !== user.id) {
+
+  if (goal.user.toString() !== req.user.id) {
     res.status(401);
-    throw new Error("User not authorized.");
+    throw new Error("User not authorized");
   }
+
   const updatedGoal = await Goal.findByIdAndUpdate(id, req.body, {
     new: true,
   });
@@ -86,14 +101,13 @@ const deleteGoal = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Goal not found");
   }
-  const user = await User.findById(req.user.id);
-  if (!user) {
-    res.status(404);
+  if (!req.user) {
+    res.status(401);
     throw new Error("User not found.");
   }
-  if (goal.user.toString() !== user.id) {
+  if (goal.user.toString() !== req.user.id) {
     res.status(401);
-    throw new Error("User not authorized.");
+    throw new Error("User not authorized");
   }
   const deletedGoal = await Goal.findByIdAndDelete(id, req.body, {
     new: true,
