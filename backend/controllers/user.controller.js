@@ -78,11 +78,12 @@ const login = asyncHandler(async (req, res) => {
 // @desc Get user profile
 // @route GET /api/users/me
 // @access Private
-const getMe = (req, res) => {
+const getMe = asyncHandler(async (req, res) => {
   res.status(200).json({
-    message: "User profile retrieved successfully",
+    success: true,
+    userInfo: req.user,
   });
-};
+});
 
 // @desc Generate JWT
 const generateToken = (id, email) => {
