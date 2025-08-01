@@ -30,6 +30,10 @@ const register = asyncHandler(async (req, res) => {
   });
 
   if (user) {
+    const token = generateToken(user.id, email);
+    res.cookie("accessToken", token, {
+      httpOnly: true,
+    });
     res.status(201).json({
       success: true,
       message: "User Registered Successfully.",
@@ -38,7 +42,7 @@ const register = asyncHandler(async (req, res) => {
         name: user.name,
         email: user.email,
       },
-      accessToken: generateToken(user.id, email),
+      accessToken: token, //not recommanded to send to client
     });
   } else {
     res.status(400);
@@ -59,6 +63,11 @@ const login = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   if (user && (await bcrypt.compare(password, user.password))) {
+    const token = generateToken(user.id, email);
+    res.cookie("accessToken", token, {
+      httpOnly: true,
+    });
+
     res.status(200).json({
       success: true,
       message: "User Logged in Successfully.",
@@ -67,7 +76,7 @@ const login = asyncHandler(async (req, res) => {
         name: user.name,
         email: user.email,
       },
-      accessToken: generateToken(user.id, email),
+      accessToken: token,//not recommanded to send to client 
     });
   } else {
     res.status(400);
