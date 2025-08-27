@@ -5,6 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginMutation } from "./authApiSlice";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "sonner";
+import { getErrorMessage } from "../../utils/getErrorMessage";
+import { useNavigate } from "react-router";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -23,6 +25,8 @@ const Login: React.FC = () => {
   const [login, { isLoading }] = useLoginMutation();
   const [showPassword, setShowPassword] = useState(false);
 
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -36,8 +40,10 @@ const Login: React.FC = () => {
     try {
       const response = await login(data).unwrap();
       toast.success(`Welcome back, ${response.user.name}!`);
+      navigate("main");
     } catch (error: unknown) {
-      console.error("Login failed:", error);
+      const message = getErrorMessage(error);
+      toast.error(message);
     }
   };
 
@@ -90,10 +96,19 @@ const Login: React.FC = () => {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer"
+          className="w-full bg-blue-600 text-white py-2 mb-4 rounded-lg hover:bg-blue-700 transition cursor-pointer"
         >
           {isLoading ? "Logging in..." : "Login"}
         </button>
+        <p className="text-sm text-center text-gray-600">
+          Don't have an account?{" "}
+          <span
+            onClick={() => navigate("/register")}
+            className="text-blue-600 hover:underline cursor-pointer"
+          >
+            Register
+          </span>
+        </p>
       </form>
     </div>
   );

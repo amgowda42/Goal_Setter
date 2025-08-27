@@ -6,6 +6,16 @@ export interface User {
   email: string;
 }
 
+export interface RegisterRequest {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export interface RegisterResponse {
+  user: User;
+}
+
 export interface LoginRequest {
   email: string;
   password: string;
@@ -21,6 +31,13 @@ export interface AuthInfoResponse {
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    register: builder.mutation<RegisterResponse, RegisterRequest>({
+      query: (credentials) => ({
+        url: "/users/register",
+        method: "POST",
+        body: credentials,
+      }),
+    }),
     login: builder.mutation<LoginResponse, LoginRequest>({
       query: (credentials) => ({
         url: "/users/login",
@@ -41,5 +58,9 @@ export const authApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation, useLogoutMutation, useGetAuthInfoQuery } =
-  authApiSlice;
+export const {
+  useRegisterMutation,
+  useLoginMutation,
+  useLogoutMutation,
+  useGetAuthInfoQuery,
+} = authApiSlice;
