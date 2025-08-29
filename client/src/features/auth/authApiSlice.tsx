@@ -26,7 +26,8 @@ export interface LoginResponse {
 }
 
 export interface AuthInfoResponse {
-  user: User;
+  success: boolean;
+  userInfo: User;
 }
 
 export const authApiSlice = apiSlice.injectEndpoints({
@@ -52,7 +53,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     getAuthInfo: builder.query<AuthInfoResponse, void>({
-      query: () => "/users/info",
+      query: () => "/users/me",
       keepUnusedDataFor: 0,
     }),
   }),
