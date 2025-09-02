@@ -76,7 +76,7 @@ const login = asyncHandler(async (req, res) => {
         name: user.name,
         email: user.email,
       },
-      accessToken: token,//not recommanded to send to client 
+      accessToken: token, //not recommanded to send to client
     });
   } else {
     res.status(400);
@@ -90,6 +90,7 @@ const login = asyncHandler(async (req, res) => {
 const getMe = asyncHandler(async (req, res) => {
   res.status(200).json({
     success: true,
+    loggedIn: true,
     userInfo: req.user,
   });
 });

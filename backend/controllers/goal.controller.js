@@ -23,12 +23,17 @@ const getGoals = asyncHandler(async (req, res) => {
 // @route   POST /api/goals
 // @access  Private
 const setGoal = asyncHandler(async (req, res) => {
-  const { text } = req.body;
+  const { text, title } = req.body;
+  if (!title) {
+    res.status(400);
+    throw new Error("Please add a title");
+  }
   if (!text) {
     res.status(400);
     throw new Error("Please add a text field");
   }
   const goal = await Goal.create({
+    title: req.body.title,
     text: req.body.text,
     user: req.user.id,
   });
