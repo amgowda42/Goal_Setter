@@ -1,4 +1,4 @@
-import apiSlice from "../../app/apiSlice";
+  import apiSlice from "../../app/apiSlice";
 
 export interface User {
   id: string;
@@ -27,6 +27,7 @@ export interface LoginResponse {
 
 export interface AuthInfoResponse {
   success: boolean;
+  loggedIn: boolean;
   userInfo: User;
 }
 
