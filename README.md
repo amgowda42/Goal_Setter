@@ -100,7 +100,7 @@ npm run dev
 - Building a full-stack MERN app with modern best practices.
 - Implementing authentication/authorization using JWT + cookies.
 - Organizing backend with a clean folder structure.
-- Using React Query + Axios for centralized API handling.
+- Using React Query for centralized API handling.
 - Adding type safety & validation in frontend with TypeScript + Zod.
 
 ## 📜 License
