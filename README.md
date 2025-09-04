@@ -87,31 +87,28 @@ Start frontend:
 npm run dev
 ```
 
-▶️ Usage
+## ▶️ Usage
 
-Register/Login as a user.
+- Register/Login as a user.
+- Set your goals (title, description, etc.).
+- Track progress, edit, or delete goals anytime.
+- Authentication is handled securely using cookies.
 
-Set your goals (title, description, etc.).
+## 🎯 Learning Outcomes
 
-Track progress, edit, or delete goals anytime.
+- Through this project, I focused on:
 
-Authentication is handled securely using cookies.
+- Building a full-stack MERN app with modern best practices.
 
-🎯 Learning Outcomes
+- Implementing authentication/authorization using JWT + cookies.
 
-Through this project, I focused on:
+- Organizing backend with a clean folder structure.
 
-Building a full-stack MERN app with modern best practices.
+- Using React Query + Axios for centralized API handling.
 
-Implementing authentication/authorization using JWT + cookies.
+- Adding type safety & validation in frontend with TypeScript + Zod.
 
-Organizing backend with a clean folder structure.
+## 📜 License
 
-Using React Query + Axios for centralized API handling.
-
-Adding type safety & validation in frontend with TypeScript + Zod.
-
-📜 License
-
-This project is licensed under the MIT License.
+- This project is licensed under the MIT License.
 
