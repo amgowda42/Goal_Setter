@@ -57,9 +57,6 @@ Goal-Setter/
 
 1️⃣ Clone the repository
 git clone https://github.com/amgowda42/Goal_Setter.git
-```
-cd goal-setter
-```
 
 2️⃣ Backend Setup
 ```
@@ -75,14 +72,20 @@ JWT_SECRET=your_secret_key
 ```
 
 Start backend:
+```
 npm run dev
+```
 
 3️⃣ Frontend Setup
-cd ../client
+```
+cd client
 npm install
+```
 
 Start frontend:
+```
 npm run dev
+```
 
 ▶️ Usage
 
