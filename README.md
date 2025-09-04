@@ -56,7 +56,7 @@ Goal-Setter/
 ## ⚙️ Installation & Setup
 
 1️⃣ Clone the repository
-git clone https://github.com/your-username/goal-setter.git
+git clone https://github.com/amgowda42/Goal_Setter.git
 ```
 cd goal-setter
 ```
