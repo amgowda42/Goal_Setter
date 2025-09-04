@@ -1,33 +1,34 @@
-🎯 Goal Setter:-
+## 🎯 Goal Setter:-
 
-A MERN stack application built to help users set goals, track their progress, edit, and delete them with ease.
-The main purpose of this project is to understand and implement a complete MERN stack workflow, including authentication, authorization, token handling, and clean code organization.
+- A MERN stack application built to help users set goals, track their progress, edit, and delete them with ease.
+- The main purpose of this project is to understand and implement a complete MERN stack workflow, including authentication, authorization, token handling, and clean code organization.
 
-🚀 Features:-
+## 🚀 Features
 
-✅ User authentication & authorization
-✅ Token handling with cookies (res.cookies) — secure and modern approach
-✅ Centralized API handling with credentials support in frontend
-✅ Well-structured backend folder organization
-✅ Goal management: Create, Edit, Delete, Track progress
-✅ Type-safe frontend with TypeScript
-✅ Form validation using React Hook Form + Zod
-✅ API handling with React Query
+- ✅ User authentication & authorization  
+- ✅ Token handling with **cookies (res.cookies)** — secure and modern approach  
+- ✅ Centralized API handling with credentials support in frontend  
+- ✅ Well-structured backend folder organization  
+- ✅ Goal management: Create, Edit, Delete, Track progress  
+- ✅ Type-safe frontend with **TypeScript**  
+- ✅ Form validation using **React Hook Form + Zod**  
+- ✅ API handling with **React Query**  
 
-🛠️ Tech Stack:-
+
+## 🛠️ Tech Stack:-
 
 Frontend
-⚡ Vite – Modern build tool
-⚛️ React 19 – UI development
-📦 React Query – API handling
-🛡️ TypeScript – Type safety
-✅ React Hook Form + Zod – Form validation
+- ⚡ Vite – Modern build tool
+- ⚛️ React 19 – UI development
+- 📦 React Query – API handling
+- 🛡️ TypeScript – Type safety
+- ✅ React Hook Form + Zod – Form validation
 
 Backend
-🟢 Node.js – Runtime environment
-🚏 Express.js – Server framework
-🍃 MongoDB (NoSQL) – Database
-🔑 JWT + Cookies – Authentication
+- 🟢 Node.js – Runtime environment
+- 🚏 Express.js – Server framework
+- 🍃 MongoDB (NoSQL) – Database
+- 🔑 JWT + Cookies – Authentication
 
 ## 📂 Project Structure
 
@@ -52,16 +53,19 @@ Goal-Setter/
 │
 └── README.md
 ```
-⚙️ Installation & Setup
+## ⚙️ Installation & Setup
 
 1️⃣ Clone the repository
 git clone https://github.com/your-username/goal-setter.git
+```
 cd goal-setter
+```
 
 2️⃣ Backend Setup
-
+```
 cd backend
 npm install
+```
 
 Create a .env file inside the backend/ folder and add:
 MONGODB_URI=your_mongodb_connection_string
