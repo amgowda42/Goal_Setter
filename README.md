@@ -29,8 +29,9 @@ Backend
 🍃 MongoDB (NoSQL) – Database
 🔑 JWT + Cookies – Authentication
 
-📂 Project Structure:-
-//corrections are there
+## 📂 Project Structure
+
+```
 Goal-Setter/
 │── backend/           # Express + MongoDB backend
 │   ├── config/        # DB connection & environment setup
@@ -50,7 +51,7 @@ Goal-Setter/
 │   └── vite.config.ts # Vite config
 │
 └── README.md
-
+```
 ⚙️ Installation & Setup
 
 1️⃣ Clone the repository
