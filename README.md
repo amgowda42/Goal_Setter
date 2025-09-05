@@ -34,24 +34,91 @@ Backend
 
 ```
 Goal-Setter/
-│── backend/           # Express + MongoDB backend
-│   ├── config/        # DB connection & environment setup
-│   ├── controllers/   # Route logic
-│   ├── middleware/    # Auth & error handling
-│   ├── models/        # MongoDB models
-│   ├── routes/        # API routes
-│   └── server.js      # Entry point
 │
-│── client/            # React frontend
+│── backend/                     # Express + MongoDB backend
+│   ├── config/                  # DB connection & environment setup
+│   │   ├── db.js
+│   │   └── env.js
+│   │
+│   ├── controllers/             # Route logic
+│   │   └── goalController.js
+│   │
+│   ├── middleware/              # Auth & error handling
+│   │   ├── authMiddleware.js
+│   │   └── errorMiddleware.js
+│   │
+│   ├── models/                  # MongoDB models
+│   │   └── goalModel.js
+│   │
+│   ├── routes/                  # API routes
+│   │   ├── authRoutes.js
+│   │   └── goalRoutes.js
+│   │
+│   ├── utils/                   # Utility functions (e.g., JWT, logger)
+│   │   └── generateToken.js
+│   │
+│   ├── tests/                   # Jest / Supertest for backend
+│   │   └── goal.test.js
+│   │
+│   ├── server.js                # Entry point
+│   └── package.json
+│
+│── client/                      # React + Vite frontend
+│   ├── public/                  # Static assets
+│   │   └── favicon.ico
+│   │
 │   ├── src/
-│   │   ├── api/       # Centralized API handling (Axios/React Query)
-│   │   ├── components/# UI components
-│   │   ├── context/   # Global state / Auth context
-│   │   ├── pages/     # App pages
-│   │   └── types/     # TypeScript types
-│   └── vite.config.ts # Vite config
+│   │   ├── api/                 # Centralized API handling
+│   │   │   ├── axiosInstance.ts
+│   │   │   └── goalApi.ts
+│   │   │
+│   │   ├── assets/              # Images, icons, fonts
+│   │   │   └── logo.svg
+│   │   │
+│   │   ├── components/          # Reusable UI components
+│   │   │   ├── Button.tsx
+│   │   │   └── Navbar.tsx
+│   │   │
+│   │   ├── context/             # Global state / Auth context
+│   │   │   └── AuthContext.tsx
+│   │   │
+│   │   ├── hooks/               # Custom React hooks
+│   │   │   └── useAuth.ts
+│   │   │
+│   │   ├── layouts/             # Page layouts
+│   │   │   └── DashboardLayout.tsx
+│   │   │
+│   │   ├── pages/               # App pages
+│   │   │   ├── Auth/
+│   │   │   │   ├── Login.tsx
+│   │   │   │   └── Register.tsx
+│   │   │   ├── Dashboard.tsx
+│   │   │   └── Goals.tsx
+│   │   │
+│   │   ├── routes/              # Routing configuration
+│   │   │   └── index.tsx
+│   │   │
+│   │   ├── styles/              # Global styles (CSS/Tailwind config)
+│   │   │   └── index.css
+│   │   │
+│   │   ├── types/               # TypeScript types/interfaces
+│   │   │   └── goal.d.ts
+│   │   │
+│   │   ├── utils/               # Helper functions
+│   │   │   └── formatDate.ts
+│   │   │
+│   │   ├── App.tsx              # Root component
+│   │   └── main.tsx             # Entry point
+│   │
+│   ├── tsconfig.app.json
+│   ├── eslint.config.js
+│   ├── vite.config.ts
+│   └── package.json
 │
-└── README.md
+├── .gitignore
+├── README.md
+└── package.json                 # Root-level (if monorepo setup)
+
 ```
 ## ⚙️ Installation & Setup
 
