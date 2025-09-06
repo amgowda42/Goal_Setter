@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useCreateGoalMutation } from "./goalApiSlice";
+import { toast } from "sonner";
 
 interface CreateGoalFormProps {
   onClose: () => void;
@@ -23,9 +25,16 @@ const CreateGoalForm = ({ onClose }: CreateGoalFormProps) => {
     mode: "onChange",
   });
 
-  const onSubmit = (data: GoalFormData) => {
-    console.log("New Goal:", data);
-    onClose();
+  const [createGoal, { isLoading }] = useCreateGoalMutation();
+
+  const onSubmit = async (data: GoalFormData) => {
+    try {
+      await createGoal(data).unwrap();
+      toast.success("Goal created successfully!");
+      onClose();
+    } catch {
+      toast.error("Failed to create goal. Please try again.");
+    }
   };
 
   return (
@@ -65,7 +74,7 @@ const CreateGoalForm = ({ onClose }: CreateGoalFormProps) => {
           type="submit"
           className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 cursor-pointer"
         >
-          Save
+          {isLoading ? "Saving" : "Save"}
         </button>
       </div>
     </form>

@@ -18,14 +18,33 @@ export interface GetGoalsResponse {
   goals: GoalTypes[];
 }
 
+interface CreateGoalRequest {
+  title: string;
+  text: string;
+}
+
+interface CreateGoalResponse {
+  text: string;
+  title: string;
+}
+
 export const goalApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getGoals: builder.query<GetGoalsResponse, void>({
       query: () => "/goals",
+      providesTags: ["Goal"],
+    }),
+    createGoal: builder.mutation<CreateGoalRequest, CreateGoalResponse, void>({
+      query: (newGoal) => ({
+        url: "/goals",
+        method: "POST",
+        body: newGoal,
+      }),
+      invalidatesTags: ["Goal"],
     }),
   }),
 });
 
-export const { useGetGoalsQuery } = goalApiSlice;
+export const { useGetGoalsQuery, useCreateGoalMutation } = goalApiSlice;
 
 export type GoalError = FetchBaseQueryError | SerializedError;

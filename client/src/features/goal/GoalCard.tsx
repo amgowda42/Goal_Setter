@@ -6,7 +6,7 @@ type GoalCardProps = {
 
 const GoalCard = ({ goal }: GoalCardProps) => {
   return (
-    <div className="p-3 rounded-lg shadow-lg border-2 border-blue-600 bg-white">
+    <div className="p-3 rounded-lg shadow-lg border-2 border-blue-600 bg-white mb-6">
       <p className="text-md font-semibold text-gray-500">
         Goal Set At: {new Date(goal.createdAt).toLocaleDateString("en-GB")}
       </p>
