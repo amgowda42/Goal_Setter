@@ -36,30 +36,25 @@ Backend
 Goal-Setter/
 │
 │── backend/                     # Express + MongoDB backend
-│   ├── config/                  # DB connection & environment setup
+│   ├── config/                  # DB connection & Cores Options setup
 │   │   ├── db.js
-│   │   └── env.js
+│   │   └── coresOptions.js      
 │   │
 │   ├── controllers/             # Route logic
-│   │   └── goalController.js
+│   │   ├── goal.controller.js   # Goal Controller logics
+|   |   └── user.controller.js   # User COntroller logics
 │   │
 │   ├── middleware/              # Auth & error handling
 │   │   ├── authMiddleware.js
 │   │   └── errorMiddleware.js
 │   │
-│   ├── models/                  # MongoDB models
-│   │   └── goalModel.js
+│   ├── models/
+|   |   ├── user.model.js        # MongoDB models
+│   │   └── goal.model.js
 │   │
 │   ├── routes/                  # API routes
-│   │   ├── authRoutes.js
-│   │   └── goalRoutes.js
-│   │
-│   ├── utils/                   # Utility functions (e.g., JWT, logger)
-│   │   └── generateToken.js
-│   │
-│   ├── tests/                   # Jest / Supertest for backend
-│   │   └── goal.test.js
-│   │
+│   │   ├── goal.routes.js
+│   │   └── user.routes.js
 │   ├── server.js                # Entry point
 │   └── package.json
 │
