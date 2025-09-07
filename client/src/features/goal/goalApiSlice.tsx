@@ -28,6 +28,16 @@ interface CreateGoalResponse {
   title: string;
 }
 
+interface EditGoalRequest {
+  title: string;
+  text: string;
+}
+
+interface EditGoalResponse {
+  text: string;
+  title: string;
+}
+
 export const goalApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getGoals: builder.query<GetGoalsResponse, void>({
@@ -42,9 +52,33 @@ export const goalApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Goal"],
     }),
+    editGoal: builder.mutation<
+      EditGoalResponse,
+      { id: string; data: EditGoalRequest },
+      void
+    >({
+      query: ({ id, data }) => ({
+        url: `/goals/${id}`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["Goal"],
+    }),
+    deleteGoal: builder.mutation<{ message: string }, string>({
+      query: (id) => ({
+        url: `/goals/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Goal"],
+    }),
   }),
 });
 
-export const { useGetGoalsQuery, useCreateGoalMutation } = goalApiSlice;
+export const {
+  useGetGoalsQuery,
+  useCreateGoalMutation,
+  useEditGoalMutation,
+  useDeleteGoalMutation,
+} = goalApiSlice;
 
 export type GoalError = FetchBaseQueryError | SerializedError;

@@ -2,10 +2,29 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { CircleUser } from "lucide-react";
 import { selectCurrentUser } from "../features/auth/authSlice";
+import { useLogoutMutation } from "../features/auth/authApiSlice";
+import { getErrorMessage } from "../utils/getErrorMessage";
+import { toast } from "sonner";
+import type { AppDispatch } from "../app/store";
+import { useDispatch } from "react-redux";
+import { clearUser } from "../features/auth/authSlice";
 
 const Navbar = () => {
   const user = useSelector(selectCurrentUser);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [logout] = useLogoutMutation();
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleLogout = async () => {
+    try {
+      await logout().unwrap();
+      toast.success("user logged out.");
+      dispatch(clearUser());
+    } catch (error: unknown) {
+      const message = getErrorMessage(error);
+      toast.error(message);
+    }
+  };
 
   return (
     <div className="h-[64px] border-b-3 border-black flex justify-between px-3 items-center">
@@ -24,7 +43,10 @@ const Navbar = () => {
               <li className="px-4 py-2 hover:bg-gray-300 cursor-pointer">
                 My Profile
               </li>
-              <li className="px-4 py-2 hover:bg-gray-300 cursor-pointer">
+              <li
+                className="px-4 py-2 hover:bg-gray-300 cursor-pointer"
+                onClick={handleLogout}
+              >
                 Logout
               </li>
             </ul>
