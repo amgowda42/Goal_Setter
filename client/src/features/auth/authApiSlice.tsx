@@ -1,4 +1,4 @@
-  import apiSlice from "../../app/apiSlice";
+import apiSlice from "../../app/apiSlice";
 
 export interface User {
   _id: string;
@@ -39,6 +39,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: credentials,
       }),
+      invalidatesTags: ["User"],
     }),
     login: builder.mutation<LoginResponse, LoginRequest>({
       query: (credentials) => ({
@@ -46,16 +47,19 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: credentials,
       }),
+      invalidatesTags: ["User"],
     }),
     logout: builder.mutation<void, void>({
       query: () => ({
         url: "/users/logout",
         method: "POST",
       }),
+      invalidatesTags: ["User"],
     }),
     getAuthInfo: builder.query<AuthInfoResponse, void>({
       query: () => "/users/me",
       keepUnusedDataFor: 0,
+      providesTags: ["User"],
     }),
   }),
 });
