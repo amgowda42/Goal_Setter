@@ -35,84 +35,69 @@ Backend
 ```
 Goal-Setter/
 │
-│── backend/                     # Express + MongoDB backend
-│   ├── config/                  # DB connection & Cores Options setup
+│── backend/                           # Express + MongoDB backend
+│   ├── config/                        # DB connection & Cores Options setup
 │   │   ├── db.js
 │   │   └── coresOptions.js      
 │   │
-│   ├── controllers/             # Route logic
-│   │   ├── goal.controller.js   # Goal Controller logics
-|   |   └── user.controller.js   # User COntroller logics
+│   ├── controllers/                   # Route logic
+│   │   ├── goal.controller.js         # Goal Controller logics
+|   |   └── user.controller.js         # User COntroller logics
 │   │
-│   ├── middleware/              # Auth & error handling
+│   ├── middleware/                    # Auth & error handling
 │   │   ├── authMiddleware.js
 │   │   └── errorMiddleware.js
 │   │
 │   ├── models/
-|   |   ├── user.model.js        # MongoDB models
+|   |   ├── user.model.js              # MongoDB models
 │   │   └── goal.model.js
 │   │
-│   ├── routes/                  # API routes
+│   ├── routes/                        # API routes
 │   │   ├── goal.routes.js
 │   │   └── user.routes.js
-│   ├── server.js                # Entry point
+│   ├── server.js                      # Entry point
 │   └── package.json
 │
-│── client/                      # React + Vite frontend
-│   ├── public/                  # Static assets
+│── client/                            # React + Vite frontend
+│   ├── public/                        # Static assets
 │   │   └── favicon.ico
 │   │
 │   ├── src/
-│   │   ├── api/                 # Centralized API handling
-│   │   │   ├── axiosInstance.ts
-│   │   │   └── goalApi.ts
+│   │   ├── app/                       # Centralized API handling
+|   |   |   ├── AuthLoader.tsx         # load to logic on every hard refresh
+│   │   │   ├── apiSlice.tsx           # base url with code splitting allowed
+│   │   │   └── store.tsx              # store
 │   │   │
-│   │   ├── assets/              # Images, icons, fonts
-│   │   │   └── logo.svg
-│   │   │
-│   │   ├── components/          # Reusable UI components
-│   │   │   ├── Button.tsx
+│   │   ├── ui/                        # Reusable UI components
 │   │   │   └── Navbar.tsx
 │   │   │
-│   │   ├── context/             # Global state / Auth context
-│   │   │   └── AuthContext.tsx
-│   │   │
-│   │   ├── hooks/               # Custom React hooks
-│   │   │   └── useAuth.ts
-│   │   │
-│   │   ├── layouts/             # Page layouts
-│   │   │   └── DashboardLayout.tsx
-│   │   │
-│   │   ├── pages/               # App pages
-│   │   │   ├── Auth/
-│   │   │   │   ├── Login.tsx
-│   │   │   │   └── Register.tsx
-│   │   │   ├── Dashboard.tsx
-│   │   │   └── Goals.tsx
-│   │   │
-│   │   ├── routes/              # Routing configuration
+│   │   ├── features/                  # feature wise file organised
+|   |   |   ├── goal/
+|   |   |   |   ├── goalApiSlice.tsx   # goal apis called 
+|   |   |   |   └── goal/              # goal feature components  
+│   │   │   └── auth/
+|   |   |       ├── authApiSlice.tsx   # auth apis called
+|   |   |       └── auth/              # auth feature components
+│   │   │ 
+│   │   ├── layouts/                   # Layouts (auth and main)
+│   │   │   ├── AuthLayout.tsx      
+|   |   |   └── AuthenticatedLayout.tsx   
+|   |   |   
+│   │   ├── routes/                    # Routes configured
 │   │   │   └── index.tsx
 │   │   │
-│   │   ├── styles/              # Global styles (CSS/Tailwind config)
-│   │   │   └── index.css
+│   │   ├── utils/                     # utils
+│   │   │   └── getErrorMessage.tsx    # Error display logic function
 │   │   │
-│   │   ├── types/               # TypeScript types/interfaces
-│   │   │   └── goal.d.ts
-│   │   │
-│   │   ├── utils/               # Helper functions
-│   │   │   └── formatDate.ts
-│   │   │
-│   │   ├── App.tsx              # Root component
-│   │   └── main.tsx             # Entry point
+│   │   ├── App.tsx                    # Root component
+│   │   └── main.tsx                   # Entry point
 │   │
 │   ├── tsconfig.app.json
 │   ├── eslint.config.js
 │   ├── vite.config.ts
 │   └── package.json
 │
-├── .gitignore
-├── README.md
-└── package.json                 # Root-level (if monorepo setup)
+└── README.md                          # Readme
 
 ```
 ## ⚙️ Installation & Setup
