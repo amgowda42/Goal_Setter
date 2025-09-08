@@ -5,19 +5,19 @@
 
 ## 🚀 Features
 
-- ✅ User authentication & authorization  
-- ✅ Token handling with **cookies (res.cookies)** — secure and modern approach  
-- ✅ Centralized API handling with credentials support in frontend  
-- ✅ Well-structured backend folder organization  
-- ✅ Goal management: Create, Edit, Delete, Track progress  
-- ✅ Type-safe frontend with **TypeScript**  
-- ✅ Form validation using **React Hook Form + Zod**  
-- ✅ API handling with **React Query**  
-
+- ✅ User authentication & authorization
+- ✅ Token handling with **cookies (res.cookies)** — secure and modern approach
+- ✅ Centralized API handling with credentials support in frontend
+- ✅ Well-structured backend folder organization
+- ✅ Goal management: Create, Edit, Delete, Track progress
+- ✅ Type-safe frontend with **TypeScript**
+- ✅ Form validation using **React Hook Form + Zod**
+- ✅ API handling with **React Query**
 
 ## 🛠️ Tech Stack:-
 
 Frontend
+
 - ⚡ Vite – Modern build tool
 - ⚛️ React 19 – UI development
 - 📦 React Query – API handling
@@ -25,6 +25,7 @@ Frontend
 - ✅ React Hook Form + Zod – Form validation
 
 Backend
+
 - 🟢 Node.js – Runtime environment
 - 🚏 Express.js – Server framework
 - 🍃 MongoDB (NoSQL) – Database
@@ -38,7 +39,7 @@ Goal-Setter/
 │── backend/                           # Express + MongoDB backend
 │   ├── config/                        # DB connection & Cores Options setup
 │   │   ├── db.js
-│   │   └── coresOptions.js      
+│   │   └── coresOptions.js
 │   │
 │   ├── controllers/                   # Route logic
 │   │   ├── goal.controller.js         # Goal Controller logics
@@ -69,24 +70,28 @@ Goal-Setter/
 │   │   │   └── store.tsx              # store
 │   │   │
 │   │   ├── ui/                        # Reusable UI components
+|   |   |   ├── NotFoundPage.tsx
 │   │   │   └── Navbar.tsx
 │   │   │
 │   │   ├── features/                  # feature wise file organised
 |   |   |   ├── goal/
-|   |   |   |   ├── goalApiSlice.tsx   # goal apis called 
-|   |   |   |   └── goal/              # goal feature components  
+|   |   |   |   ├── goalApiSlice.tsx   # goal apis called
+|   |   |   |   └── goal/              # goal feature components
 │   │   │   └── auth/
 |   |   |       ├── authApiSlice.tsx   # auth apis called
 |   |   |       └── auth/              # auth feature components
-│   │   │ 
+│   │   │
 │   │   ├── layouts/                   # Layouts (auth and main)
-│   │   │   ├── AuthLayout.tsx      
-|   |   |   └── AuthenticatedLayout.tsx   
-|   |   |   
+│   │   │   ├── AuthLayout.tsx
+|   |   |   └── AuthenticatedLayout.tsx
+|   |   |
 │   │   ├── routes/                    # Routes configured
+│   │   │   ├── ProtectedRoute.tsx
+│   │   │   ├── PublicRoute.tsx
 │   │   │   └── index.tsx
 │   │   │
 │   │   ├── utils/                     # utils
+│   │   │   ├── useAuth.tsx            # use Auth hook
 │   │   │   └── getErrorMessage.tsx    # Error display logic function
 │   │   │
 │   │   ├── App.tsx                    # Root component
@@ -100,18 +105,21 @@ Goal-Setter/
 └── README.md                          # Readme
 
 ```
+
 ## ⚙️ Installation & Setup
 
 1️⃣ Clone the repository
 git clone https://github.com/amgowda42/Goal_Setter.git
 
 2️⃣ Backend Setup
+
 ```
 cd backend
 npm install
 ```
 
 Create a .env file inside the backend/ folder and add:
+
 ```
 MONGODB_URI=your_mongodb_connection_string
 PORT=8000
@@ -119,17 +127,20 @@ JWT_SECRET=your_secret_key
 ```
 
 Start backend:
+
 ```
 npm run dev
 ```
 
 3️⃣ Frontend Setup
+
 ```
 cd client
 npm install
 ```
 
 Start frontend:
+
 ```
 npm run dev
 ```
@@ -153,4 +164,3 @@ npm run dev
 ## 📜 License
 
 - This project is licensed under the MIT License.
-
