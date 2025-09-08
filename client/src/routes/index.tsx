@@ -4,7 +4,7 @@ import Register from "../features/auth/Register";
 import Goal from "../features/goal/Goal";
 import AuthenticatedLayout from "../layouts/AuthenticatedLayout";
 import AuthLayout from "../layouts/AuthLayout";
-import PublicRout from "./PublicRout";
+import PublicRout from "./PublicRoute";
 import ProtectedRoute from "./ProtectedRoute";
 import NotFoundPage from "../ui/NotFoundPage";
 

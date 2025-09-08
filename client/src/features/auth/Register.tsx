@@ -41,7 +41,7 @@ const Register: React.FC = () => {
     try {
       const response = await registeruser(data).unwrap();
       toast.success(`Registerd Successfully, Hello ${response.user.name}!`);
-      navigate("main");
+      navigate("/main");
     } catch (error: unknown) {
       const message = getErrorMessage(error);
       toast.error(message);
