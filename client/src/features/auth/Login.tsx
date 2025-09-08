@@ -40,7 +40,7 @@ const Login: React.FC = () => {
     try {
       const response = await login(data).unwrap();
       toast.success(`Welcome back, ${response.user.name}!`);
-      navigate("main");
+      navigate("/main");
     } catch (error: unknown) {
       const message = getErrorMessage(error);
       toast.error(message);
