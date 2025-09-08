@@ -1,7 +1,7 @@
 import Navbar from "../ui/Navbar";
 import { Outlet } from "react-router";
 
-const AuthnticatedLayout = () => {
+const AuthenticatedLayout = () => {
   return (
     <div className="h-100vh mx-auto">
       <Navbar />
@@ -12,4 +12,4 @@ const AuthnticatedLayout = () => {
   );
 };
 
-export default AuthnticatedLayout;
+export default AuthenticatedLayout;
