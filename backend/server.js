@@ -1,4 +1,4 @@
-// 1. Core requires
+// imports of Core requires
 const express = require("express");
 require("dotenv").config();
 const port = process.env.PORT || 8000;
@@ -11,33 +11,34 @@ const cors = require("cors");
 connectDB();
 const app = express();
 
-// 2. CORS first (handles preflight before anything else)
+// CORS options and config
 const corsOptions = {
   origin: "http://localhost:3000",
   credentials: true,
 };
 app.use(cors(corsOptions));
 
-// 3. Handle preflight (important for Express 5)
+// Handling preflight
 app.options(/.*/, cors(corsOptions));
 
-// 4. Body parsers and cookies
+// Body parsers and cookies
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// 5. Health check (before routes, so it's always fast)
+// Health check
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "OK", timestamp: new Date().toISOString() });
 });
 
-// 6. Routes
+// Routes
 app.use("/api/goals", require("./routes/goal.routes"));
 app.use("/api/users", require("./routes/user.routes"));
 
-// 7. Error handler should be last
+// Error handler 
 app.use(errorHandler);
 
+// server listen
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
