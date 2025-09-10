@@ -8,7 +8,9 @@ const cookieParser = require("cookie-parser");
 const { errorHandler } = require("./middleware/errorMiddleware.js");
 const cors = require("cors");
 
+// mongoDB Config
 connectDB();
+
 const app = express();
 
 // CORS options and config
