@@ -4,7 +4,7 @@ import { TbEdit } from "react-icons/tb";
 import { useState } from "react";
 import EditGoalForm from "./EditGoalForm";
 import { toast } from "sonner";
-import { useDeleteGoalMutation } from "./goalApiSlice";
+import { useDeleteGoalMutation, useEditGoalMutation } from "./goalApiSlice";
 
 type GoalCardProps = {
   goal: GoalTypes;
@@ -13,6 +13,7 @@ type GoalCardProps = {
 const GoalCard = ({ goal }: GoalCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [deleteGoal] = useDeleteGoalMutation();
+  const [editGoal] = useEditGoalMutation();
 
   const handleDelete = async () => {
     try {
@@ -20,6 +21,24 @@ const GoalCard = ({ goal }: GoalCardProps) => {
       toast.success("Goal deleted successfully!");
     } catch {
       toast.error("Failed to delete goal. Please try again.");
+    }
+  };
+
+  const handleStatusChange = async (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const newStatus = e.target.value === "active";
+    try {
+      await editGoal({
+        id: goal._id,
+        data: { status: newStatus },
+      }).unwrap();
+
+      toast.success(
+        `Goal status updated to ${newStatus ? "Active" : "Completed"}`
+      );
+    } catch {
+      toast.error("Failed to update goal status. Please try again.");
     }
   };
 
@@ -31,6 +50,18 @@ const GoalCard = ({ goal }: GoalCardProps) => {
         </p>
         <h3 className="text-2xl font-semibold text-blue-500">{goal.title}</h3>
         <p className="text-gray-700 text-md font-medium">{goal.text}</p>
+        <label htmlFor={`status-${goal._id}`} className="sr-only">
+          Goal Status
+        </label>
+        <select
+          id={`status-${goal._id}`}
+          value={goal.status ? "active" : "completed"}
+          onChange={handleStatusChange}
+          className="mt-2 px-3 py-1 rounded-md border border-gray-300 text-sm font-semibold cursor-pointer"
+        >
+          <option value="active">Active</option>
+          <option value="completed">Completed</option>
+        </select>
       </div>
       <div className="flex istems-center gap-3">
         <RiDeleteBin6Line onClick={handleDelete} className="cursor-pointer" />

@@ -15,6 +15,10 @@ const goalSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add a text field"],
     },
+    status: {
+      type: Boolean,
+      default: true,
+    },
   },
   {
     timestamps: true,

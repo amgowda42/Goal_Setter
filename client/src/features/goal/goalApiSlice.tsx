@@ -5,6 +5,7 @@ import apiSlice from "../../app/apiSlice";
 export interface GoalTypes {
   _id: string;
   title: string;
+  status: boolean;
   text: string;
   user: string;
   createdAt: string;
@@ -29,13 +30,15 @@ interface CreateGoalResponse {
 }
 
 interface EditGoalRequest {
-  title: string;
-  text: string;
+  title?: string;
+  text?: string;
+  status?: boolean;
 }
 
 interface EditGoalResponse {
   text: string;
   title: string;
+  status: boolean;
 }
 
 export const goalApiSlice = apiSlice.injectEndpoints({
