@@ -20,6 +20,7 @@
   "description": "Goal setter ",
   "main": "server.js",
   "devDependencies": {
+    "joi": "^18.0.1",
     "nodemon": "^3.1.10"
   },
   "author": "Annappa Gowda",
