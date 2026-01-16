@@ -20,7 +20,7 @@ Frontend
 
 - ⚡ Vite – Modern build tool
 - ⚛️ React 19 – UI development
-- 📦 React Query – API handling
+- 📦 RTK Query – API handling
 - 🛡️ TypeScript – Type safety
 - ✅ React Hook Form + Zod – Form validation
 
